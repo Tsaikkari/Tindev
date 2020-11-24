@@ -24,6 +24,12 @@ export default class JobPost extends BaseEntity {
   jobDescription!: string
 
   @Column()
+  city!: string
+
+  @Column()
+  country!: string
+
+  @Column()
   seniority!: string
 
   @Column()
