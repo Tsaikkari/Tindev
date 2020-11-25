@@ -10,7 +10,7 @@ import {
 } from 'typeorm'
 
 //import Company from './Company.postgres.ts'
-//import Skill from './Skills.postgres.ts'
+//import Skill from './Skill.postgres.ts'
 
 @Entity()
 export default class JobPost extends BaseEntity {
