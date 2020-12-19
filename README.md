@@ -35,7 +35,7 @@ The current job market is competitive and full of flaws, especially discriminati
 
    - [React](https://reactjs.org)
    - [Redux](https://react-redux.js.org/)
-   - [Semantic UI](https://semantic-ui.com/)
+   - [React Bootstrap](https://semantic-ui.com/)
    - [Typescript](https://www.typescriptlang.org/)
    - [Lodash](https://lodash.com/)
 
