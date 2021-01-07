@@ -65,9 +65,11 @@ export const match = async (
         filterPost.push(matchCount[id].jobPost)
       }
     }
+    console.log('filterPost', filterPost)
 
     res.deliver(200, 'success', filterPost)
   } catch (error) {
     next(new InternalServerError())
   }
 }
+console.log(match)
