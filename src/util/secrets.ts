@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 import fs from 'fs'
 import logger from './logger'
-import { ConnectionOptions } from 'typeorm'
+import { createConnection, ConnectionOptions } from 'typeorm'
 
 import Entities from '../entities'
 

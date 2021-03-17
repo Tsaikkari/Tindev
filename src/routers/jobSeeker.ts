@@ -1,18 +1,13 @@
 import express from 'express'
 import tokenVerify from '../middlewares/tokenVerify'
 
-import {
-  getJobSeeker,
-  createJobSeeker,
-  updateJobSeeker,
-} from '../controllers/jobSeeker'
-import { match } from '../controllers/match'
+import { createJobSeeker, updateJobSeeker } from '../controllers/jobSeeker'
+import { jobseekerMatch } from '../controllers/match'
 
 const router = express.Router()
 
-router.get('/', tokenVerify, getJobSeeker)
 router.post('/', createJobSeeker)
-router.get('/match', tokenVerify, match)
+router.get('/match', tokenVerify, jobseekerMatch)
 router.patch('/', tokenVerify, updateJobSeeker)
 
 export default router

@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import bcrypt from 'bcrypt'
-import passport from 'passport'
-import jwt from 'jsonwebtoken'
+
 import {
   NotFoundError,
   UnauthorizedError,
@@ -17,7 +16,7 @@ export const createJobSeeker = async (
   next: NextFunction
 ) => {
   try {
-    const { info, credential, skills } = req.body
+    const { info, credential } = req.body
     const exists = await Credential.findOne({
       where: { email: credential.email },
     })
@@ -33,7 +32,6 @@ export const createJobSeeker = async (
     const newJobSeeker = JobSeeker.create({
       ...info,
       credentials: newCredential,
-      skills: skills,
     })
 
     await JobSeeker.save(newJobSeeker)
@@ -41,19 +39,6 @@ export const createJobSeeker = async (
     res.deliver(201, 'Success')
   } catch (error) {
     next(new InternalServerError(error.message))
-  }
-}
-
-export const getJobSeeker = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  try {
-    const jobSeeker = req.user as JobSeeker
-    res.deliver(200, 'Success', jobSeeker)
-  } catch (error) {
-    next(new InternalServerError())
   }
 }
 
@@ -70,22 +55,22 @@ export const updateJobSeeker = async (
       return next(new NotFoundError('Account not found'))
     }
     if (update.firstName) {
-      jobSeeker!.firstName = update.firstName
+      jobSeeker.firstName = update.firstName
     }
     if (update.lastName) {
-      jobSeeker!.lastName = update.lastName
+      jobSeeker.lastName = update.lastName
     }
     if (update.contact) {
-      jobSeeker!.contact = update.contact
+      jobSeeker.contact = update.contact
     }
     if (update.relocate) {
-      jobSeeker!.relocate = update.relocate
+      jobSeeker.relocate = update.relocate
     }
     if (update.seniority) {
-      jobSeeker!.seniority = update.seniority
+      jobSeeker.seniority = update.seniority
     }
     if (update.startingDate) {
-      jobSeeker!.startingDate = update.startingDate
+      jobSeeker.startingDate = update.startingDate
     }
     if (update.skills) {
       jobSeeker.skills = update.skills

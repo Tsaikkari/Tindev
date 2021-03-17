@@ -7,14 +7,14 @@ import {
   updateJobPost,
   deleteJobPostbyId,
   updateEmployer,
-  getEmployer,
 } from '../controllers/employer'
+import { employerMatch } from '../controllers/match'
 const router = express.Router()
 
 router.post('/', registerEmployer)
-router.get('/', tokenVerify, getEmployer)
 router.post('/jobs', tokenVerify, createJobPost)
 router.patch('/jobs/:id', tokenVerify, updateJobPost)
 router.patch('/', tokenVerify, updateEmployer)
 router.delete('/jobs/:id', tokenVerify, deleteJobPostbyId)
+router.get('/match/:postId', tokenVerify, employerMatch)
 export default router

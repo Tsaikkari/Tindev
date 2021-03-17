@@ -11,6 +11,7 @@ describe('jobSeeker controller', () => {
   beforeEach(async () => {
     await connection.clear()
   })
+  
   afterAll(async () => {
     await connection.close()
   })
